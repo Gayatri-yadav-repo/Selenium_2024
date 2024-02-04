@@ -1,10 +1,14 @@
 package TestCases;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import java.io.FileInputStream;
 import java.util.Properties;
+import java.util.logging.Logger;
+
 
 public class BaseClass {
 
@@ -15,6 +19,8 @@ public class BaseClass {
     public static  FileInputStream ip;
 
     public static WebDriver driver;
+    public static   Logger log;
+
 
 
 @BeforeClass
@@ -30,6 +36,11 @@ public class BaseClass {
         //  driver.get(prop.getProperty("url"));
         String titlename =  driver.getTitle();
         System.out.println("titlename is "+titlename);
+
+         log = Logger.getLogger("uisetup");
+        PropertyConfigurator.configure("log4j.properties");
+
+
     }
 
  @AfterClass
